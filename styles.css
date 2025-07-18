@@ -1,0 +1,145 @@
+:root {
+  --bg-dark: linear-gradient(135deg, #0f1c2e, #000814);
+  --card-bg: rgba(30, 60, 90, 0.85);
+  --nav-bg: linear-gradient(135deg, #1c2c44, #000814);
+  --input-bg: rgba(60, 100, 160, 0.6);
+  --text: #e8eaed;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --glass-blur: blur(12px);
+  --border-light: rgba(255, 255, 255, 0.15);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: var(--bg-dark);
+  color: var(--text);
+  min-height: 100vh;
+  backdrop-filter: var(--glass-blur);
+}
+
+.navbar {
+  background: var(--nav-bg);
+  padding: 1.2rem 1.6rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  border-radius: 0 0 20px 20px;
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-light);
+  gap: 5rem;
+}
+
+.navbar > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.4rem;
+}
+
+.search-box input {
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-light);
+  padding: 0.6rem 1.2rem;
+  border-radius: 12px;
+  width: 220px;
+  color: var(--text);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.15);
+}
+
+.color-palette {
+  display: flex;
+  gap: 2.2rem;
+}
+
+.color-option {
+  width: 70px;
+  height: 36px;
+  border-radius: 14px;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: border 0.2s;
+}
+
+.color-option:hover {
+  border: 2px solid white;
+}
+
+.controls {
+  display: flex;
+  gap: 2.4rem;
+}
+
+.controls i {
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.controls i:hover {
+  transform: scale(1.1);
+}
+
+.task-area {
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.task-card {
+  aspect-ratio: 1 / 1;
+  height: auto;
+  width: calc(20% - 1rem);
+  background-color: var(--card-bg);
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: var(--shadow);
+  cursor: grab;
+  transition: transform 0.2s, background-color 0.3s;
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Define color-specific classes */
+.card-pink    { background-color: rgba(255, 182, 193, 0.25); }
+.card-green   { background-color: rgba(144, 238, 144, 0.25); }
+.card-blue    { background-color: rgba(173, 216, 230, 0.25); }
+.card-yellow  { background-color: rgba(255, 215, 0, 0.25); }
+.card-purple  { background-color: rgba(138, 180, 248, 0.25); }
+
+.task-card:hover {
+  transform: translateY(-5px);
+}
+
+
+@media (max-width: 1024px) {
+  .task-card {
+    width: calc(33.33% - 1rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .task-card {
+    width: calc(50% - 1rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .task-card {
+    width: 100%;
+  }
+}
+
+.task-card:nth-child(1) { background-color: rgba(255, 182, 193, 0.25); }
+.task-card:nth-child(2) { background-color: rgba(144, 238, 144, 0.25); }
+.task-card:nth-child(3) { background-color: rgba(173, 216, 230, 0.25); }
+.task-card:nth-child(4) { background-color: rgba(255, 255, 255, 0.12); }
+.task-card:nth-child(5) { background-color: rgba(138, 180, 248, 0.25); }
