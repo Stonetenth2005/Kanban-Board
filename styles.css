@@ -80,11 +80,11 @@ body {
 .controls i {
   font-size: 1.4rem;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: transform 0.3s;
 }
 
 .controls i:hover {
-  transform: scale(1.1);
+  transform: scale(1.5);
 }
 
 .task-area {

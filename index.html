@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Modern Kanban</title>
+  <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="stylesheet" href="styles.css" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
 </head>
@@ -25,7 +26,7 @@
       <i data-lucide="moon"></i>
     </div>
     <div class="controls">
-      <i data-lucide="swap-vertical"></i>
+      <i data-lucide="move-vertical"></i>
       <i data-lucide="eye"></i>
       <i data-lucide="brush"></i>
       <i data-lucide="refresh-ccw"></i>
@@ -39,5 +40,10 @@
     <div class="task-card" style="background-color: rgba(255, 215, 0, 0.25);">Task 4</div>
     <div class="task-card" style="background-color: rgba(138, 180, 248, 0.25);">Task 5</div>
   </div>
+
+  <script>
+    lucide.createIcons();
+  </script>
+
 </body>
 </html>
