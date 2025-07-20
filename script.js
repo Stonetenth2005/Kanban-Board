@@ -1,8 +1,10 @@
+// Selecting Colours and Making Cards
+
 let plus = document.querySelector('.plus');
 let taskArea = document.querySelector('.task-area');
 
 
-let selectedColour;
+let selectedColour = '';
 
 let color = document.querySelectorAll('.color-option');
 
@@ -17,6 +19,10 @@ color.forEach(function(element){
 })
 
 plus.addEventListener('click', function(){
+    if(selectedColour == ''){
+        alert('Pick a Colour')
+        return;
+    }
     let newCard = document.createElement('div');
     newCard.classList.add('task-card');
     if(selectedColour=='pink'){
@@ -42,3 +48,34 @@ document.addEventListener('click', function(e){
         selectedColour = '';
     }
 });
+
+// Selecting cards and Moving, editing them
+
+let selectedCard;
+
+document.addEventListener('click', function(e){
+    if(e.target.classList.contains('task-card')){
+        document.querySelectorAll('.task-card').forEach(function(element){
+            element.style.border = '1px solid rgba(255, 255, 255, 0.1)';
+        })
+        e.target.style.border = '3px solid white';
+        selectedCard = e.target;
+    }
+    else{
+        document.querySelectorAll('.task-card').forEach(function(element){
+            element.style.border = '1px solid rgba(255, 255, 255, 0.1)';
+        })
+        selectedCard = null;
+    }
+})
+
+// Issue -> if we click anywhere else, then the card gets unselected, we need it for controls
+
+document.addEventListener('click', function(e){
+    if(e.target.classList.contains('task-card')){
+        e.target.addEventListener('dblclick', function(){
+            
+        })
+    }
+})
+
