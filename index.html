@@ -34,9 +34,33 @@
   </div>
 
   <div class="task-area">
-    <div class="task-card" style="background-color: rgba(255, 182, 193, 0.25);">
-      <div class="card-title" style="background-color:rgba(255, 182, 193, 0.575)">
-        Title 1
+    <div class="ticket-card">
+      <div class="ticket-color-bar" style="background-color: #ffc107;"></div>
+        <div class="ticket-content">
+          <h3 class="ticket-title">Sample Task Title</h3>
+          <p class="ticket-body">This is a short description of the task. You can edit it later.</p>
+        </div>
+    </div>
+
+  </div>
+
+  <div class="popup-overlay" id="popup">
+    <div class="popup-box">
+      <div class="popup-colors">
+        <div class="color-option" style="background-color: pink;" data-color="pink"></div>
+        <div class="color-option" style="background-color: lightgreen;" data-color="lightgreen"></div>
+        <div class="color-option" style="background-color: lightblue;" data-color="lightblue"></div>
+        <div class="color-option" style="background-color: gold;" data-color="gold"></div>
+      </div>
+
+      <div class="popup-content">
+        <input type="text" placeholder="Enter Title" id="card-title" />
+        <textarea placeholder="Enter Task Details" id="card-body"></textarea>
+
+        <div class="popup-buttons">
+          <button id="create-card">Create</button>
+          <button id="cancel-popup">Cancel</button>
+        </div>
       </div>
     </div>
   </div>

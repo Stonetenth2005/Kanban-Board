@@ -94,65 +94,148 @@ body {
   gap: 1rem;
 }
 
-.task-card {
-  aspect-ratio: 1 / 1;
-  height: auto;
-  width: calc(20% - 1rem);
-  background-color: var(--card-bg);
-  border-radius: 16px;
-  padding: 1rem;
-  box-shadow: var(--shadow);
-  cursor: grab;
-  transition: transform 0.2s, background-color 0.3s;
-  backdrop-filter: var(--glass-blur);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 0%;
-}
-.card-title{
-  margin:0%;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-  height: 40px;
-  text-align: center;
+.ticket-card {
+  width: 260px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+}
+
+.ticket-card:hover {
+  transform: scale(1.02);
+}
+
+.ticket-color-bar {
+  height: 8px;
+  width: 100%;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.ticket-content {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ticket-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+}
+
+.ticket-body {
+  font-size: 0.95rem;
+  color: #cccccc;
+  margin: 0;
+  line-height: 1.4;
+}
+
+
+/* Overlay backdrop */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 15, 15, 0.5);
+  backdrop-filter: blur(5px);
+  display: none; /*Change to flex, when showing*/
   justify-content: center;
-  font-size: larger;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  align-items: center;
+  z-index: 999;
 }
 
-/* Define color-specific classes */
-.card-pink    { background-color: rgba(255, 182, 193, 0.25); }
-.card-green   { background-color: rgba(144, 238, 144, 0.25); }
-.card-blue    { background-color: rgba(173, 216, 230, 0.25); }
-.card-yellow  { background-color: rgba(255, 215, 0, 0.25); }
-.card-purple  { background-color: rgba(138, 180, 248, 0.25); }
-
-.task-card:hover {
-  transform: translateY(-5px);
+/* Popup Box Centered */
+.popup-box {
+  width: 500px;
+  display: flex;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 
-@media (max-width: 1024px) {
-  .task-card {
-    width: calc(33.33% - 1rem);
-  }
+/* Color Options Left Side */
+.popup-colors {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  justify-content: center;
 }
 
-@media (max-width: 768px) {
-  .task-card {
-    width: calc(50% - 1rem);
-  }
+.popup-colors .color-option {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border 0.2s;
 }
 
-@media (max-width: 480px) {
-  .task-card {
-    width: 100%;
-  }
+.popup-colors .color-option.selected {
+  border: 3px solid white;
 }
 
-.task-card:nth-child(1) { background-color: rgba(255, 182, 193, 0.25); }
-.task-card:nth-child(2) { background-color: rgba(144, 238, 144, 0.25); }
-.task-card:nth-child(3) { background-color: rgba(173, 216, 230, 0.25); }
-.task-card:nth-child(4) { background-color: rgba(255, 255, 255, 0.12); }
-.task-card:nth-child(5) { background-color: rgba(138, 180, 248, 0.25); }
+/* Right Side Input Area */
+.popup-content {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.popup-content input,
+.popup-content textarea {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  color: white;
+  font-size: 0.95rem;
+  outline: none;
+  resize: none;
+}
+
+.popup-content textarea {
+  height: 80px;
+}
+
+/* Buttons spread to both sides */
+.popup-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.popup-buttons button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  background: white;
+  color: #111;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 45%;
+}
+
+.popup-buttons button:hover {
+  background: #ddd;
+}
+
