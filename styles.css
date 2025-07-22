@@ -248,3 +248,90 @@ body {
   background: #ddd;
 }
 
+.selected {
+  border: 3px solid white;
+}
+
+/* Warning Popup Overlay (matches your main popup style) */
+#warningModal.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 15, 15, 0.5);
+  backdrop-filter: blur(5px);
+  display: none; /* Use display: flex when showing */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Modal box (glassmorphic and soft like main popup) */
+#warningModal .modal-content {
+  width: 400px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  padding: 24px;
+  color: white;
+  text-align: center;
+}
+
+/* Modal text */
+#warningModal .modal-content p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+/* Modal buttons */
+#warningModal .modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+#warningModal .modal-buttons button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+/* Confirm (destructive action) */
+#confirmDelete {
+  background: #ff4d4d;
+  color: white;
+}
+
+#confirmDelete:hover {
+  background: #e84343;
+}
+
+/* Cancel (neutral) */
+#cancelDelete {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+#cancelDelete:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.delete.active-delete {
+  background-color: rgba(255, 0, 0, 0.1);  /* Soft red background */
+  color: #e63946;                         /* Gentle red icon color */
+  border-radius: 8px;
+  padding: 4px;
+  transform: scale(1.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 6px rgba(230, 57, 70, 0.2);  /* subtle red shadow */
+}

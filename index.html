@@ -28,7 +28,7 @@
     <div class="controls">
       <i data-lucide="move-vertical"></i>
       <i data-lucide="eye"></i>
-      <i data-lucide="brush"></i>
+      <i class='clear-all'data-lucide="brush"></i>
       <i data-lucide="refresh-ccw"></i>
     </div>
   </div>
@@ -65,6 +65,18 @@
       </div>
     </div>
   </div>
+
+  <!-- Warning Popup Modal -->
+  <div id="warningModal" class="modal">
+    <div class="modal-content">
+      <p>Are you sure you want to delete all tickets?</p>
+      <div class="modal-buttons">
+        <button id="confirmDelete">Yes, Delete</button>
+        <button id="cancelDelete">Cancel</button>
+      </div>
+    </div>
+  </div>
+
 
   <script>
     lucide.createIcons();
