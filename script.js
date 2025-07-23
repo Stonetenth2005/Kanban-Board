@@ -73,29 +73,6 @@ document.querySelector('#create-card').addEventListener('click', function(){
     }
 })
 
-// Selecting Cards - Leaving it unused for now
-
-let selectedCard;
-
-document.addEventListener('click', function(e){
-    let ticketList = document.querySelectorAll('.ticket-card');
-    let card = e.target.closest('.ticket-card'); // closest() climbs the DOM tree and looks for the 1st match
-    if(!card){
-        ticketList.forEach((element)=>{
-            element.style.border = '';
-        })
-        return;
-    }
-    if (card.classList.contains('selected')) return;
-   
-    ticketList.forEach((element)=>{
-        element.style.border = '';
-    })
-    card.style.border = '3px solid white';
-
-    selectedCard = card;
-})
-
 
 //***************** Broom - Deleteing all tickets at once *****************
 
@@ -146,5 +123,58 @@ document.addEventListener('click', function(e){
     }
 })
 
+
+// ***************** Reload Page *****************
+
+let refresh = document.querySelector('.refresh');
+
+refresh.addEventListener('click', function(){
+    location.reload();
+})
+
+
+// ***************** Theme Change *****************
+
+let isChanged = false;
+
+let themeChange = document.querySelector('.theme')
+
+themeChange.addEventListener('click', function(){
+    if(!isChanged){
+        document.documentElement.classList.add('light');
+        isChanged = true;
+    }
+    else{
+        document.documentElement.classList.remove('light');
+        isChanged = false;
+    }
+})
+
+// Selecting Cards - Leaving it unused for now
+
+let selectedCard;
+
+document.addEventListener('click', function(e){
+    let ticketList = document.querySelectorAll('.ticket-card');
+    let card = e.target.closest('.ticket-card'); // closest() climbs the DOM tree and looks for the 1st match
+    if(!card){
+        ticketList.forEach((element)=>{
+            element.style.border = '';
+        })
+        return;
+    }
+    if (card.classList.contains('selected')) return;
+   
+    ticketList.forEach((element)=>{
+        element.style.border = '';
+    })
+    if(isChanged){
+        card.style.border = '3px solid grey';
+    }
+    else{
+        card.style.border = '3px solid white';
+    }
+    selectedCard = card;
+})
 
 

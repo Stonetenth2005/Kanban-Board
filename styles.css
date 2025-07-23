@@ -85,6 +85,7 @@ body {
 
 .controls i:hover {
   transform: scale(1.5);
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .task-area {
@@ -327,6 +328,331 @@ body {
 }
 
 .delete.active-delete {
+  background-color: rgba(255, 0, 0, 0.1);  /* Soft red background */
+  color: #e63946;                         /* Gentle red icon color */
+  border-radius: 8px;
+  padding: 4px;
+  transform: scale(1.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 6px rgba(230, 57, 70, 0.2);  /* subtle red shadow */
+}
+
+
+/* light theme */
+
+.light body {
+  background: linear-gradient(to bottom right, #f8f9fd, #e0e7ff);
+  color: #1e1e2f;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar */
+.light .navbar {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 1.2rem 1.6rem;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-radius: 0 0 20px 20px;
+  gap: 5rem;
+  flex-wrap: wrap;
+}
+
+.light .navbar input[type="text"] {
+  background-color: var(--input-bg);
+  padding: 0.6rem 1.2rem;
+  border-radius: 12px;
+  border: none;
+  background: rgba(159, 156, 156, 0.6);
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.05);
+  outline: none;
+  width: 220px;
+  color: var(--text);
+  backdrop-filter: var(--glass-blur);
+}
+
+/* Color Palette */
+.light .color-palette{
+  display: flex;
+  gap: 2.2rem;
+}
+
+.light .color-option {
+  width: 70px;
+  height: 36px;
+  border-radius: 14px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  transition: border 0.2s;
+}
+
+.light .color-option:hover {
+  border: 2px solid rgb(99, 94, 94);
+}
+
+/* Controls */
+.light .controls {
+  display: flex;
+  gap: 2.4rem;
+}
+
+.light .controls i {
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.light .controls i:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.light .task-area {
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Active Delete Icon */
+.light .active-delete {
+  background-color: rgba(255, 0, 0, 0.15);
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  border-radius: 8px;
+}
+
+
+/* Ticket Cards */
+.light .ticket-card .modern-glass {
+  width: 260px;
+  height: 260px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.8); /* light background */
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  box-shadow: 0 8px 24px rgba(166, 166, 166, 0.1); /* softer shadow */
+  border: 1px solid rgba(0, 0, 0, 0.05); /* subtle border for light theme */
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+}
+
+.light .ticket-card.modern-glass:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(43, 43, 43, 0.35);
+}
+
+.light .ticket-color-bar {
+  height: 10px;
+  width: 100%;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.light .ticket-content {
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  color: #161616;
+  flex-grow: 1;
+}
+
+.light .ticket-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0;
+  color: #000000;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.light .ticket-body {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #2c2e30;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+/* Popup */
+.light .popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(242, 242, 242, 0.5);
+  backdrop-filter: blur(5px);
+  display: none;   /*Change to flex, when showing*/
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.light .popup-box {
+  width: 500px;
+  display: flex;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(12px);
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.light .popup-colors {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.05);
+  justify-content: center;
+}
+
+.light .popup-colors .color-option {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border 0.2s;
+}
+
+.light .popup-colors .color-option.selected {
+  border: 3px solid rgb(0, 0, 0);
+}
+
+/* Right Side Input Area */
+.light .popup-content {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.light .popup-content input,
+.light .popup-content textarea {
+  background: rgba(0, 0, 0, 0.15);
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  color: rgb(0, 0, 0);
+  font-size: 0.95rem;
+  outline: none;
+  resize: none;
+}
+
+.light.popup-content textarea {
+  height: 80px;
+}
+
+/* Buttons spread to both sides */
+.light.popup-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.light.popup-buttons button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  background: rgb(0, 0, 0);
+  color: #eeeeee;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 45%;
+}
+
+.light .popup-buttons button:hover {
+  background: #a8a8a8;
+}
+
+.light .selected {
+  border: 3px solid rgb(0, 0, 0);
+}
+
+/* Warning Popup Overlay (matches your main popup style) */
+.light #warningModal.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(242, 242, 242, 0.5);
+  backdrop-filter: blur(5px);
+  display: none; /* Use display: flex when showing */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Modal box (glassmorphic and soft like main popup) */
+.light #warningModal .modal-content {
+  width: 400px;
+  background: rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 1.25rem;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.3);
+  padding: 24px;
+  color: rgb(0, 0, 0);
+  text-align: center;
+}
+
+/* Modal text */
+.light #warningModal .modal-content p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #000000;
+}
+
+/* Modal buttons */
+.light #warningModal .modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.light #warningModal .modal-buttons button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+/* Confirm (destructive action) */
+.light #confirmDelete {
+  background: #ff4d4d;
+  color: rgb(0, 0, 0);
+}
+
+.light #confirmDelete:hover {
+  background: #e84343;
+}
+
+/* Cancel (neutral) */
+.light #cancelDelete {
+  background: rgba(0, 0, 0, 0.15);
+  color: rgb(0, 0, 0);
+}
+
+.light #cancelDelete:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.light .delete.active-delete {
   background-color: rgba(255, 0, 0, 0.1);  /* Soft red background */
   color: #e63946;                         /* Gentle red icon color */
   border-radius: 8px;
