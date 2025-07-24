@@ -279,7 +279,7 @@ eye.addEventListener('click', function(){
         const taskArea = document.querySelector('.task-area');
         taskArea.style.flexDirection = '';
         taskArea.style.alignItems = '';
-        taskArea.style.gap = '1rem';
+        taskArea.style.gap = '';
 
         document.querySelectorAll('.ticket-card').forEach(card => {
             card.style.width = '';
@@ -287,5 +287,22 @@ eye.addEventListener('click', function(){
         });
         eyeActive = false;
     }
+})
 
+
+// ***************** Search *****************
+
+let searchBox = document.querySelector('.search-box input');
+
+searchBox.addEventListener('input',function(){
+    let search = searchBox.value;
+    let cardList = document.querySelectorAll('.ticket-card');
+    cardList.forEach(function(el){
+        if(el.querySelector('.ticket-title').innerText.trim().toLowerCase().includes(search)){
+            el.style.display = 'block';
+        }
+        else{
+            el.style.display = 'none';
+        }
+    })
 })
