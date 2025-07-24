@@ -150,7 +150,7 @@ themeChange.addEventListener('click', function(){
     }
 })
 
-// Selecting Cards - Leaving it unused for now
+// Selecting Cards
 
 let selectedCard;
 
@@ -181,9 +181,12 @@ document.addEventListener('click', function(e){
     selectedCard = card;
 })
 
+
+// ***************** Download Cards in JSON *****************
+
 document.querySelector('.download').addEventListener('click', function () {
     if (!selectedCard) {
-        alert("No card is selected!");
+        alert("Select a card to download");
         return;
     }
 
@@ -215,3 +218,40 @@ document.querySelector('.download').addEventListener('click', function () {
     link.click();
 });
 
+
+// ***************** Filtering cards based on colors *****************
+
+let colorList = document.querySelectorAll('.color-palette .color-option')
+
+colorList.forEach(function(color){
+    color.addEventListener('click',function(){
+        colorList.forEach(function(c){
+            c.style.border = '';
+        })
+        color.style.border = '2px solid white'
+        let selectedColor = color.style.backgroundColor;
+        let cardList = document.querySelectorAll('.ticket-card');
+        cardList.forEach(function(co){
+            if(getComputedStyle(co.querySelector('.ticket-color-bar')).backgroundColor!=selectedColor){
+                co.style.display = 'none';
+            }
+            else{
+                co.style.display = 'block';
+            }
+        })
+
+    })
+})
+
+document.addEventListener('click', function(e){
+    let cardList = document.querySelectorAll('.ticket-card');
+    let clickedOnColor = Array.from(colorList).some(color => color.contains(e.target));
+    if(!clickedOnColor){
+        cardList.forEach(function(co){
+            co.style.display = 'block';
+        })
+        colorList.forEach(function(element){
+            element.style.border = ''
+        })
+    }
+})
