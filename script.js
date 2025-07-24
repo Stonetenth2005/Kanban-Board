@@ -163,8 +163,9 @@ document.addEventListener('click', function(e){
         })
         return;
     }
-    if (card.classList.contains('selected')) return;
-   
+    if(e.target.classList.contains('download')){
+        return;
+    }
     ticketList.forEach((element)=>{
         element.style.border = '';
     })
@@ -174,7 +175,43 @@ document.addEventListener('click', function(e){
     else{
         card.style.border = '3px solid white';
     }
+    if(card == null){
+        return;
+    }
     selectedCard = card;
 })
 
+document.querySelector('.download').addEventListener('click', function () {
+    if (!selectedCard) {
+        alert("No card is selected!");
+        return;
+    }
+
+    const title = selectedCard.querySelector('.ticket-title')?.textContent.trim() || '';
+    const description = selectedCard.querySelector('.ticket-body')?.textContent.trim() || '';
+    const color = selectedCard.querySelector('.ticket-color-bar')?.style.backgroundColor || '';
+
+    const colorMap = {
+        '#ffc0cb': 'pink',
+        '#90ee90': 'green',
+        '#add8e6': 'blue',
+        '#ffd700': 'yellow'
+    };
+
+    const colorName = colorMap[color.toLowerCase()] || color;
+
+    const data = {
+        title,
+        description,
+        priority: colorName
+    };
+
+    const jsonData = JSON.stringify(data, null, 2);
+
+    const blob = new Blob([jsonData], { type: 'application/json' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'ticket.json';
+    link.click();
+});
 
