@@ -157,13 +157,15 @@ let selectedCard;
 document.addEventListener('click', function(e){
     let ticketList = document.querySelectorAll('.ticket-card');
     let card = e.target.closest('.ticket-card'); // closest() climbs the DOM tree and looks for the 1st match
+
+    if(e.target.classList.contains('download')){
+        return;
+    }
     if(!card){
         ticketList.forEach((element)=>{
             element.style.border = '';
         })
-        return;
-    }
-    if(e.target.classList.contains('download')){
+        selectedCard = null;
         return;
     }
     ticketList.forEach((element)=>{
@@ -214,7 +216,7 @@ document.querySelector('.download').addEventListener('click', function () {
     const blob = new Blob([jsonData], { type: 'application/json' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = 'ticket.json';
+    link.download = 'card.json';
     link.click();
 });
 
@@ -254,4 +256,36 @@ document.addEventListener('click', function(e){
             element.style.border = ''
         })
     }
+})
+
+// ***************** Changing the View *****************
+
+let eye = document.querySelector('.eye');
+let eyeActive = false;
+eye.addEventListener('click', function(){
+    if(!eyeActive){
+        const taskArea = document.querySelector('.task-area');
+        taskArea.style.flexDirection = 'column';
+        taskArea.style.alignItems = 'stretch';
+        taskArea.style.gap = '1.2rem';
+
+        document.querySelectorAll('.ticket-card').forEach(card => {
+            card.style.width = '100%';
+            card.style.height = 'auto';
+        });
+        eyeActive = true;
+    }
+    else{
+        const taskArea = document.querySelector('.task-area');
+        taskArea.style.flexDirection = '';
+        taskArea.style.alignItems = '';
+        taskArea.style.gap = '1rem';
+
+        document.querySelectorAll('.ticket-card').forEach(card => {
+            card.style.width = '';
+            card.style.height = '';
+        });
+        eyeActive = false;
+    }
+
 })
