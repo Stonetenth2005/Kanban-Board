@@ -295,7 +295,7 @@ eye.addEventListener('click', function(){
 let searchBox = document.querySelector('.search-box input');
 
 searchBox.addEventListener('input',function(){
-    let search = searchBox.value;
+    let search = searchBox.value.toLowerCase();
     let cardList = document.querySelectorAll('.ticket-card');
     cardList.forEach(function(el){
         if(el.querySelector('.ticket-title').innerText.trim().toLowerCase().includes(search)){
@@ -305,4 +305,46 @@ searchBox.addEventListener('input',function(){
             el.style.display = 'none';
         }
     })
+})
+
+
+// ***************** Sorting based on color *****************
+
+let priority = {
+    'rgb(255, 192, 203)': 4,   
+    'rgb(255, 215, 0)': 3,     
+    'rgb(173, 216, 230)': 2,   
+    'rgb(144, 238, 144)': 1
+};
+
+
+let sort = document.querySelector('.sort');
+sort.addEventListener('click', function(){
+    let cardDetails = [];
+
+    let cardList = document.querySelectorAll('.ticket-card');
+
+    cardList.forEach(function(el){
+        let details = {
+            element:el,
+            priority:priority[`${getComputedStyle(el.querySelector('.ticket-color-bar')).backgroundColor}`],
+            title:el.querySelector('.ticket-title').innerText
+        }
+        cardDetails.push(details);
+    })
+
+    cardDetails.sort((a, b) => {
+    if (b.priority !== a.priority) {
+        return b.priority - a.priority;
+    }
+    return a.title.localeCompare(b.title);
+    });
+
+    let area = document.querySelector('.task-area')
+    area.innerHTML = '';
+
+    cardDetails.forEach(function(el){
+        area.appendChild(el.element);    
+    })
+
 })
